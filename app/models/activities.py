@@ -11,6 +11,9 @@ if TYPE_CHECKING:
 
 class Activity(Base):
     __tablename__ = "activities"
+    __table_args__ = (
+        UniqueConstraint("name", "parent_id", name="uq_activity_name_parent"),
+    )
 
     name: Mapped[str] = mapped_column(
         String(100),

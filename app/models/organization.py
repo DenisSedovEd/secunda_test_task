@@ -4,11 +4,11 @@ from sqlalchemy import String, Table, Column, MetaData, ForeignKey, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
-from models.activities import Activity
 
 if TYPE_CHECKING:
     from app.models.phone_number import PhoneNumber
     from app.models.building import Building
+    from app.models.activities import Activity
 
 
 organization_activities = Table(
@@ -50,10 +50,15 @@ class Organization(Base):
         cascade="all, delete-orphan",
     )
 
+    building_id: Mapped[int] = mapped_column(
+        ForeignKey("buildings.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+
     building: Mapped[Building] = relationship(
         "Building",
-        backref="organization",
-        cascade="None",
+        back_populates="organizations",
     )
 
     activity: Mapped[list[Activity]] = relationship(
