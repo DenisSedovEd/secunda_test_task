@@ -2,7 +2,7 @@ from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
-from app.config import DB_URL, DB_ECHO
+from core.config import DB_URL, DB_ECHO
 
 engine = create_async_engine(
     DB_URL,

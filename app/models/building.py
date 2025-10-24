@@ -22,14 +22,17 @@ class Building(Base):
         unique=True,
         nullable=False,
     )
+
     latitude: Mapped[DECIMAL] = mapped_column(
         Numeric(9, 6),
         nullable=False,
     )
+
     longitude: Mapped[DECIMAL] = mapped_column(
         Numeric(9, 6),
         nullable=False,
     )
+
     organization: Mapped["Organization"] = relationship(
         "Organization",
         backref="building",
