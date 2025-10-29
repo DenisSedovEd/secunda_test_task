@@ -1,12 +1,11 @@
 from typing import Sequence
 
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
-from sqlalchemy.orm import selectinload
-
 from models.activities import Activity
 from models.building import Building
 from models.organization import Organization, organization_activities
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
 
 
 class DoesNotExist(Exception):

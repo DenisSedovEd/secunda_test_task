@@ -1,7 +1,7 @@
+from core.db import get_session
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.db import get_session
 from app.repositories import ActivityRepository, OrganizationRepository
 from app.services.activity_tree import get_subtree_ids
 

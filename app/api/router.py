@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.api.v1 import buildings, activities, organizations
 
+from app.api.v1 import activities, buildings, organizations
 
 api_router = APIRouter()
 api_router.include_router(buildings.router, prefix="/buildings", tags=["building"])

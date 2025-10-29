@@ -1,7 +1,6 @@
-from fastapi import FastAPI, Depends
-
 from api.router import api_router
 from core.security import get_api_key
+from fastapi import Depends, FastAPI
 
 app = FastAPI(
     title="Справочник организаций",

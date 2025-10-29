@@ -15,7 +15,7 @@ async_engine: AsyncEngine = create_async_engine(
     future=settings.db.future,
 )
 async_session = async_sessionmaker(
-    bind=engine, class_=AsyncSession, expire_on_commit=False
+    bind=async_engine, class_=AsyncSession, expire_on_commit=False
 )
 
 
@@ -26,3 +26,24 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
         except Exception:
             await session.rollback()
             raise
+
+
+# sync_engine = create_engine(
+#     settings.db.sync_url,
+#     echo=settings.db.echo,
+# )
+#
+# sync_session = sessionmaker(
+#     sync_engine,
+#     expire_on_commit=False,
+#     class_=AsyncSession,
+# )
+#
+#
+# def get_sync_session() -> Generator[Session]:
+#     with sync_session() as session:
+#         try:
+#             yield session
+#         except Exception:
+#             session.rollback()
+#             raise
