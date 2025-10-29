@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import DECIMAL, Numeric, String, UniqueConstraint
+from sqlalchemy import DECIMAL, Integer, Numeric, String, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
@@ -15,6 +15,12 @@ class Building(Base):
         UniqueConstraint(
             "latitude", "longitude", name="uq_building_latitude_longitude"
         ),
+    )
+
+    id: Mapped[int] = mapped_column(
+        Integer,
+        primary_key=True,
+        index=True,
     )
 
     address: Mapped[str] = mapped_column(

@@ -1,6 +1,10 @@
-from typing import List
+from typing import TYPE_CHECKING, List
 
 from pydantic import BaseModel
+
+if TYPE_CHECKING:
+    from app.models.activities import Activity
+    from app.models.building import Building
 
 
 class OrganizationBase(BaseModel):

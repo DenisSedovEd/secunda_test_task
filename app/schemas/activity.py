@@ -1,6 +1,6 @@
-from typing import Optional, List
+from typing import List, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ActivityBase(BaseModel):
@@ -14,7 +14,7 @@ class ActivityCreate(ActivityBase):
 
 class ActivityResponse(ActivityBase):
     id: int
-    children: List["ActivityResponse"] = []
+    children: List["ActivityResponse"] = Field(default_factory=list)
 
     class Config:
         from_attributes = True
