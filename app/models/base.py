@@ -1,5 +1,5 @@
 from sqlalchemy import MetaData
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase
 
 convention = {
     "ix": "ix_%(column_0_label)s",
@@ -12,4 +12,3 @@ convention = {
 
 class Base(DeclarativeBase):
     metadata = MetaData(naming_convention=convention)
-    id: Mapped[int] = mapped_column(primary_key=True)

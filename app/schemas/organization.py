@@ -1,11 +1,23 @@
+from typing import List
+
 from pydantic import BaseModel
-from app.models.organization import Organization
 
 
-class OrganizationCreate(BaseModel):
+class OrganizationBase(BaseModel):
     name: str
-    phone_numbers: list[str] = []
+    phones: list[str]
+    building_id: int
+    activity_ids: list[str]
 
 
-class OrganizationResponse(BaseModel):
-    name: str
+class OrganizationCreate(OrganizationBase):
+    pass
+
+
+class OrganizationResponse(OrganizationBase):
+    id: int
+    building: "Building"
+    activities: List["Activity"]
+
+    class Config:
+        from_attributes = True

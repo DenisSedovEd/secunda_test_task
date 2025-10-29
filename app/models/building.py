@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, DECIMAL, Numeric, UniqueConstraint
-from sqlalchemy.orm import mapped_column, Mapped, relationship
+from sqlalchemy import DECIMAL, Numeric, String, UniqueConstraint
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
 

@@ -1,14 +1,14 @@
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, Table, Column, MetaData, ForeignKey, Integer
+from sqlalchemy import Column, ForeignKey, Integer, String, Table
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
 
 if TYPE_CHECKING:
-    from app.models.phone_number import PhoneNumber
-    from app.models.building import Building
     from app.models.activities import Activity
+    from app.models.building import Building
+    from app.models.phone_number import PhoneNumber
 
 
 organization_activities = Table(
@@ -44,7 +44,7 @@ class Organization(Base):
         nullable=False,
     )
 
-    phone_number: Mapped[list[PhoneNumber]] = relationship(
+    phones: Mapped[list[PhoneNumber]] = relationship(
         "PhoneNumber",
         backref="organization",
         cascade="all, delete-orphan",
